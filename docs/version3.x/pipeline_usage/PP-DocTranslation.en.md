@@ -1144,9 +1144,10 @@ The execution results will be printed to the terminal.
 The command-line method is for quickly experiencing and viewing the results. Generally, in projects, integration via code is often required. You can download the [test file](https://paddle-model-ecology.bj.bcebos.com/paddlex/imgs/demo_image/vehicle_certificate-1.png) and use the following sample code for inference:
 
 ```python
-from paddlex import create_pipeline
+from paddleocr import PPDocTranslation
+
 # Create a translation pipeline
-pipeline = create_pipeline(pipeline="PP-DocTranslation")
+pipeline = PPDocTranslation()
 
 # Document path
 input_path = "document_sample.pdf"
@@ -2146,8 +2147,8 @@ Returns the actual angle value when enabled (e.g., [0,0,1])
 <td><code>None</code></td>
 </tr>
 <tr>
-<td><code>chat_bot_config</code></td>
-<td>Large language model configuration. Set to <code>None</code> to use instantiation parameters; otherwise, this parameter takes precedence.</td>
+<td><code>glossary</code></td>
+<td>Glossary of translation terms.</td>
 <td><code>dict|None</code></td>
 <td><code>None</code></td>
 </tr>
@@ -2155,7 +2156,13 @@ Returns the actual angle value when enabled (e.g., [0,0,1])
 <td><code>llm_request_interval</code></td>
 <td>The time interval, in seconds, for sending requests to the large language model. This parameter can be used to prevent overly frequent calls to the large language model.</td>
 <td><code>float</code></td>
-<td><code>0</code></td>
+<td><code>0.0</code></td>
+</tr>
+<tr>
+<td><code>chat_bot_config</code></td>
+<td>Large language model configuration. Set to <code>None</code> to use instantiation parameters; otherwise, this parameter takes precedence.</td>
+<td><code>dict|None</code></td>
+<td><code>None</code></td>
 </tr>
 </tbody>
 </table>
@@ -2626,15 +2633,21 @@ Below are the API references for basic serving and examples of multilingual serv
 <td>No</td>
 </tr>
 <tr>
-<td><code>chatBotConfig</code></td>
+<td><code>glossary</code></td>
 <td><code>object</code>|<code>null</code></td>
-<td>Refer to the description of the <code>chat_bot_config</code> parameter in the <code>translate</code> method of the pipeline object.</td>
+<td>Refer to the description of the <code>glossary</code> parameter in the <code>translate</code> method of the pipeline object.</td>
 <td>No</td>
 </tr>
 <tr>
 <td><code>llmRequestInterval</code></td>
 <td><code>number</code>|<code>null</code></td>
 <td>Refer to the description of the <code>llm_request_interval</code> parameter in the <code>translate</code> method of the pipeline object.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>chatBotConfig</code></td>
+<td><code>object</code>|<code>null</code></td>
+<td>Refer to the description of the <code>chat_bot_config</code> parameter in the <code>translate</code> method of the pipeline object.</td>
 <td>No</td>
 </tr>
 </tbody>
